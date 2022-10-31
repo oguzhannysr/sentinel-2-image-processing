@@ -1,4 +1,9 @@
 import numpy as np
+import os
+import rasterio as rio
+from datetime import datetime
+
+start = datetime.now()
 
 ndvi = (B08-B04)/(B08+B04)*scale_factor
 sr1 = (B08/B04)*scale_factor
@@ -22,3 +27,15 @@ VegIndicesArray = list((ndvi,sr1,sr2,osavi,mcari2,mtvi1,
 VegIndicesName = list(("ndvi","sr1","sr2","osavi","mcari2","mtvi1",
                            "tvi","tgi","vari","gndvi","savi","evi",
                            "msavi","gsavi","ivi"))
+for i in range(len(ImageBandsArray)):
+    ImageBandsArray[i][np.logical_not(maskedSLC)] = noDataValue_Bands
+    with rio.open(os.path.join(outDir,os.path.basename(inSCLPath).replace("20m.jp2", "10m.tiff").replace("SCL",ImageBandsName[i])), 'w', **bandsMeta) as output_image:
+        output_image.write(ImageBandsArray[i],1)
+
+for i in range(len(VegIndicesArray)):        
+    VegIndicesArray[i][np.logical_not(maskedSLC)] = noDataValue_Indices
+    with rio.open(os.path.join(outDir,os.path.basename(inSCLPath).replace("20m.jp2", "").replace("SCL_",VegIndicesName[i])) + ".tif", 'w', **vegMeta) as output_image:
+        output_image.write(VegIndicesArray[i],1)               
+finish = datetime.now()
+res = finish-start
+print(res.seconds)
