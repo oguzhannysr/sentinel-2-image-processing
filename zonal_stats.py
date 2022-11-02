@@ -5,7 +5,6 @@ from rasterstats import zonal_stats
 
 def ZonalStats(rasterfiles_path,vectorfiles_path):
     
-    
     rasters_path_dir = []
 
     for files in os.walk(rasterfiles_path):
@@ -45,4 +44,4 @@ def ZonalStats(rasterfiles_path,vectorfiles_path):
                 df.to_excel(rasters_path_dir[i] +"/"+ "zonal_stats.xlsx")
             #locals()[dates[0]+'_'+'%s' % bands_path[0][y][:-4]] = gdf
             #df = pd.DataFrame(index=[bands_path[0]],columns=gdf.columns)
-ZonalStats("D:\Projects\BarleyWheat\Output", "D:\Projects\BarleyWheat\Parcels\Doktar_Yozgat_2021_polygon_selection_edit_EPSG32636.shp")
+
