@@ -1,4 +1,4 @@
-# Sentinel-2 Image Preprocessing
+# Sentinel-2 Image Processing
 Preprocessing of Sentinel-2 satellite images
 
 * **Downloading satellite images**
