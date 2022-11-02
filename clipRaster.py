@@ -1,14 +1,15 @@
+import geopandas as gpd
+import rioxarray as rxr
+import os
+from rasterstats import zonal_stats
+from shapely.geometry import mapping
+import rasterio as rio
+
 def clip_raster(rasterfiles_path,clipping_area_path):
     
-    import geopandas as gpd
-    import rioxarray as rxr
-    import os
-    from rasterstats import zonal_stats
-    from shapely.geometry import mapping
-    import rasterio as rio
     global bands_path
-    rasterfiles_path = "D:\Projects\BarleyWheat\Output"
-    clipping_area_path = "D:\Downloads\study_area.geojson"
+    rasterfiles_path = "" 
+    clipping_area_path = ""
     rasters_path_dir = []
     for files in os.walk(rasterfiles_path):
         rasters_path_dir.append(files[0])
@@ -26,8 +27,4 @@ def clip_raster(rasterfiles_path,clipping_area_path):
             
             split = rasters_path_dir[i].split("\\")
             image_clipped.rio.to_raster(rasterfiles_path + '/' +split[-1] + "/" + "clipped_" + bands_path[0][y])
-            
-#%%
-clip_raster("D:\Projects\BarleyWheat\Output","D:\Downloads\study_area.geojson")
-#%%
-res = list(map(str.strip, bands_path[0]))
+          
