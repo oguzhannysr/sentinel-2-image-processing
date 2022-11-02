@@ -18,8 +18,7 @@ def clip_raster(rasterfiles_path,clipping_area_path):
         bands_path = []
         for files in os.walk(rasters_path_dir[i]):
             bands_path.append(files[2])
-    
-        bands_path[0].remove("Veg_Max_Min_Value.xlsx")
+
         for y in range(0,len(bands_path[0])):
             raster = rxr.open_rasterio(rasters_path_dir[i] +"/"+ bands_path[0][y])
             study_area = gpd.read_file(clipping_area_path)
