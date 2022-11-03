@@ -7,3 +7,4 @@ Preprocessing of Sentinel-2 satellite images
 * **Masking of satellite images using SCL band**
 * **Creating vegetation indices from images**
 * **Zonal stats of vector data**
+* **Image classification**
