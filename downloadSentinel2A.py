@@ -1,7 +1,7 @@
 import landsatxplore
 from landsatxplore.earthexplorer import EarthExplorer
 
-path = "C:/Users/O2167/Desktop/YuksekLisansProje/goruntuler"
+path = ""
 api = landsatxplore.api.API('username', 'password')
 scenes = api.search(
     dataset='sentinel_2a',
